@@ -1,5 +1,5 @@
 from peewee import *
-from server.app.model import db
+from app.model import db
 
 
 class Post(Model):
@@ -10,6 +10,3 @@ class Post(Model):
 
     class Meta:
         database = db
-
-
-db.create_tables(Post)

@@ -10,6 +10,3 @@ class User(Model):
 
     class Meta:
         database = db
-
-
-db.create_tables(User)
