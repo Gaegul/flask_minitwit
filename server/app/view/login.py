@@ -9,7 +9,7 @@ class Login(MethodView):
         id = request.json['id']
         pw = request.json['pw']
 
-        if User.get().where(User.id == id) and User.get().where(User.pw == pw):
-            return '회원가입 성공', 400
+        if User.select().where(User.id == id) and User.select().where(User.pw == pw):
+            return '로그인 성공', 200
         else:
-            return '회원가입 실패', 200
+            return '로그인 실패', 400
