@@ -9,6 +9,7 @@ class Signup(MethodView):
         pw = request.json['pw']
         name = request.json['name']
 
-        User.insert(id=id, pw=pw, name=name)
+        Users = User.insert(id=id, pw=pw, name=name)
+        Users.execute()
 
         return "회원가입 완료", 200
