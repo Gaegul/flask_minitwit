@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from flask.views import MethodView
 from app.model.user import User
 
@@ -11,8 +11,9 @@ class Login(MethodView):
 
         id_check = User.select().where(User.id == id)
         pw_check = User.select().where(User.pw == pw)
+        user_name = User.select(User.name).where(User.id == id and User.pw == pw).dicts().get()
 
         if id_check.execute() and pw_check.execute():
-            return '로그인 성공', 200
+            return jsonify(user_name), 200
         else:
             return '로그인 실패', 400
