@@ -1,10 +1,7 @@
 from flask import jsonify, Blueprint
 from flask.views import MethodView
-from flask_jwt_extended import JWTManager, jwt_required
-from server import app
+from flask_jwt_extended import jwt_required
 from app.model.user import User
-
-jwt = JWTManager(app)
 
 my_page_api = Blueprint("my_page_api", __name__)
 
