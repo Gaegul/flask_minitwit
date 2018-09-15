@@ -24,7 +24,7 @@ class Login(MethodView):
         refresh_token = create_refresh_token(identity=id)
 
         if id_check.execute() and pw_check.execute():
-            return Response(jsonify(access_token, refresh_token)), 200
+            return jsonify(access_token, refresh_token)
         else:
             return '로그인 실패', 400
 
