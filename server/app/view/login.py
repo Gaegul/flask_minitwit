@@ -18,7 +18,6 @@ class Login(MethodView):
 
         id_check = User.select().where(User.id == id)
         pw_check = User.select().where(User.pw == pw)
-       # user_name = User.select(User.name).where(User.id == id and User.pw == pw).dicts().get()
 
         access_token = create_access_token(identity=id)
         refresh_token = create_refresh_token(identity=id)

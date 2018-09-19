@@ -1,11 +1,1 @@
-from peewee import *
-from app.model import db
-
-
-class Token(Model):
-    access_token = CharField()
-
-    refresh_token = CharField()
-
-    class Meta:
-        database = db
+#토큰을 DB에따가 안하구 바로 해씀!! 그래서 얘는 없앤당!
