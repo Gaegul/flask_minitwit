@@ -1,12 +1,12 @@
 from flask import jsonify, Blueprint
-from flask.views import MethodView
 from flask_jwt_extended import jwt_required
 from app.model.user import User
+from flask_restful import Resource
 
 my_page_api = Blueprint("my_page_api", __name__)
 
 
-class My(MethodView):
+class My(Resource):
     @jwt_required
     def get(self):
         my_page = User.select().order_by(User.name).dicts()
@@ -15,4 +15,3 @@ class My(MethodView):
         return jsonify(res), 200
 
 
-my_page_api.add_url_rule('/my_page', view_func=My.as_view("my_page"))

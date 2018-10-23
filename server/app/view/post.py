@@ -1,11 +1,11 @@
-from flask.views import MethodView
 from flask import request, Blueprint, jsonify
 from app.model.post import Post
+from flask_restful import Resource
 
 post_api = Blueprint("post_api", __name__)
 
 
-class PostAPI(MethodView):
+class PostAPI(Resource):
     def post(self):
         try:
             title = request.json['title']
@@ -19,5 +19,3 @@ class PostAPI(MethodView):
 
         return '글작성 완료', 200
 
-
-post_api.add_url_rule("/post", view_func=PostAPI.as_view("post"))

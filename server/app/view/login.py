@@ -1,14 +1,14 @@
-from flask import request, jsonify, Blueprint, Response
-from flask.views import MethodView
+from flask import request, jsonify, Blueprint
 from app.model.user import User
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import create_refresh_token
+from flask_restful import Resource
 
 login_api = Blueprint('login_api', __name__)
 
 
 #로그인
-class Login(MethodView):
+class Login(Resource):
     def post(self):
         try:
             id = request.json['id']
@@ -27,5 +27,3 @@ class Login(MethodView):
         else:
             return '로그인 실패', 400
 
-
-login_api.add_url_rule('/login', view_func=Login.as_view("login"))

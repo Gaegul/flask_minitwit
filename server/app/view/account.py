@@ -1,11 +1,11 @@
 from flask import request, Blueprint, jsonify
-from flask.views import MethodView
 from app.model.user import User
+from flask_restful import Resource
 
 account_api = Blueprint("account_api", __name__)
 
 
-class Signup(MethodView):
+class Signup(Resource):
     def post(self):
         try:
             id = request.json['id']
@@ -20,4 +20,3 @@ class Signup(MethodView):
         return "회원가입 완료", 200
 
 
-account_api.add_url_rule('/signup', view_func=Signup.as_view("signup"))

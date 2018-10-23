@@ -6,7 +6,7 @@ from app.view import create_app
 
 app = Flask(__name__)
 
-db.connect()
+db.connect(reuse_if_open=True)
 db.create_tables((User, Post))
 
 create_app(app)
